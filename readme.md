@@ -4,22 +4,28 @@
 
 1. run `composer update` in dir
 2. install plugin in wordpress.
-3. Create Google Client ID and Client Secret by this article
+3. Create Google Client ID and Client Secret by this article:
 ````
  https://code.tutsplus.com/tutorials/create-a-google-login-page-in-php--cms-33214
 ````
 
-3. add define in your wp-config.php
+4.Set `Authorised redirect URIs` in Google Developer:
+````
+https://site.com/?gmail_login_redirect=yes
+````
+
+5. add define in your wp-config.php
 ````php
 define('WP_GMAIL_CLIENT_ID', 'xxx');
 define('WP_GMAIL_CLIENT_SECRET', 'xxx');
 define('WP_GMAIL_REDIRECT_PARAM', 'gmail_login_redirect');
 ````
 
-4. use `wp_gmail_login_success` WordPress action for handle user register or login
+6. use `wp_gmail_login_success` WordPress action for handle user register or login
 ````php
 do_action('wp_gmail_login_success', $accessToken, $email, $name, $familyName, $gender, $locale, $avatar, $google_account_info);
 ````
+
 
 #### Example
 
